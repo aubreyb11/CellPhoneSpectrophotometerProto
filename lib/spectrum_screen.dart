@@ -70,23 +70,22 @@ class _SpectrumScreenState extends State<SpectrumScreen> {
     //frame comes in as Camera image. Android uses YUV420 format. Y is luma = brightness, UxV is a 2-axis plane with colors.
     // https://en.wikipedia.org/wiki/Chroma_subsampling; explains the 420 part. Y is more detailed/higher resolution than UV (colors)
     // Extract grayscale intensities from center vertical strip
-    final centerX = image.width ~/ 2; //finds center of vertical strip.
+    final centerY = image.width ~/ 2; //finds center of vertical strip.
     List<double> newIntensities = [];
 
-    for (int y = 0; y < image.height; y++) {
+    for (int x = 0; x < image.height; x++) {
       // YUV420: image.planes[0] is luminance (Y), planes[1],[2] are color channels U and V.
       int sum = 0;
-      for (int dx = -12; dx <= 12; dx++) {
-        //loop so 25 pixels in center are averaged
-        final int pixelIndex =
-            y * image.planes[0].bytesPerRow +
-            (centerX +
-                dx); // finding the index for the pixel. y is what row, so mult that by number of bytes per row. centerx with distance to center
-        sum += image
-            .planes[0]
-            .bytes[pixelIndex]; //get luma(brightness) of indexed pixel
+      for (int dy = -12; dy <= 12; dy++) {//loop so 25 pixels in center are averaged
+        
+        
+        final int pixelIndex = (centerY + dy) * image.planes[0].bytesPerRow + x; // finding the index for the pixel. y is what row, so mult that by number of bytes per row. centerx with distance to center
+          
+        sum += image.planes[0].bytes[pixelIndex]; //get luma(brightness) of indexed pixel
+          
+        
       }
-
+        
       final double avgIntensity = sum / (25);
       newIntensities.add(avgIntensity); //stores all pixel brightness
     }
@@ -268,7 +267,7 @@ try {
                               },
                             ),
                             axisNameWidget: Text(
-                              "Pixel Row",
+                              "Pixel Position (Top → Bottom)",
                             ), // Label for X axis
                             axisNameSize: 20,
                           ),
