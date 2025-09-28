@@ -8,3 +8,5 @@ spectrum by Vectplus from "https://thenounproject.com/browse/icons/term/spectrum
 
 This code was prepared with the assistance of ChatGFP (yeah yeah I know...)
 It was tested on a pixel 7 Android Version 16
+
+App is supposed to run with cell phone spectrophotometer. Instructions here: https://www.instructables.com/Cellphone-Spectrophotometer/
