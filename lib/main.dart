@@ -10,7 +10,7 @@ Future<void> main() async {
   // Load available cameras on device
   cameras = await availableCameras();
   final firstCamera = cameras.first;
-
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(MyApp(camera: firstCamera));
 }
 
