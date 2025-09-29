@@ -172,25 +172,21 @@ try {
               children: [
                 // Camera preview on top
                 Expanded(flex: 2, child: CameraPreview(_controller)),
+                Row(
+                  children: [
+                    // FloatingActionButton.small(
+                    //   heroTag: "calibrate",
+                    //   onPressed: _saveCalibrationSpectrum,  
+                    //   child: Icon(Icons.auto_graph),
+                    // ),
+                    SizedBox(height: 10),
+                    FloatingActionButton.large(
+                      heroTag: "share",
+                      onPressed: _shareCsv,
+                      child: Icon(Icons.share),
+                    ),
+                  ],
 
-                Positioned(
-                  bottom: 16,
-                  right: 16,
-                  child: Row(
-                    children: [
-                      // FloatingActionButton.small(
-                      //   heroTag: "calibrate",
-                      //   onPressed: _saveCalibrationSpectrum,  
-                      //   child: Icon(Icons.auto_graph),
-                      // ),
-                      SizedBox(height: 10),
-                      FloatingActionButton.large(
-                        heroTag: "share",
-                        onPressed: _shareCsv,
-                        child: Icon(Icons.share),
-                      ),
-                    ],
-                  ),
                 ),
 
 
